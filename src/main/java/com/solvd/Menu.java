@@ -6,21 +6,46 @@ import com.solvd.body.Minivan;
 import com.solvd.body.Sedan;
 import com.solvd.exceptions.DriverException;
 import com.solvd.utils.Authentification;
+import org.apache.log4j.Logger;
 
 import java.util.Scanner;
 
 public class Menu {
+    private final static Logger LOGGER = Logger.getLogger(Menu.class);
 
 
     public Menu() {
     }
 
-    public void showMenu() {
+    public void showMenu()  {
+
+        Driver driver = new Driver();
+        driver.setId(1);
+        driver.setFirstName("Alan");
+        driver.getFirstName();
+        driver.setLastName("Cooper");
+
+        JsonToJava jsonAction = new JsonToJava();
+        String jsonStr = jsonAction.convertToJsonString(driver);
+        LOGGER.info(jsonStr);
+
+        String jsonStr1 = "{\n" +
+                "  \"id\": 1,\n" +
+                "  \"firstName\" : \"Bob\",\n" +
+                "  \"lastName\" : \"Fox\"\n" +
+                "}";
+
+        Driver driver1 = jsonAction.convertJsonToPojo(jsonStr1);
+        LOGGER.info("Name Pojo: " +driver1.getFirstName());
+        LOGGER.info("LastName Pojo: " + driver1.getLastName());
+
+
+
         Authentification auth = new Authentification();
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter your email: ");
+        LOGGER.info("Enter your email: ");
         String email = in.nextLine();
-        System.out.println("Enter your password: ");
+        LOGGER.info("Enter your password: ");
         String password = in.nextLine();
         auth.setAuthentification("src/main/resources/config.properties", "email", "5656");
 
@@ -28,7 +53,7 @@ public class Menu {
         try {
             DriverException.getDriverException(19);
 
-            System.out.println("Choose your drive experience:" + "\n" +
+            LOGGER.info("Choose your drive experience:" + "\n" +
                     " 1: 0-2 - bad experience, \n" +
                     " 2: 3-5 - middle experience, \n" +
                     " 3: 6-8 - good experience");
@@ -37,29 +62,30 @@ public class Menu {
 
             switch (yearsExperience) {
                 case 1:
-                    System.out.println("You can choose type of Sedan");
+                    LOGGER.info("You can choose type of Sedan");
                     Sedan sedan = new Sedan();
+
                     sedan.showSedanNames();
                     int type = in.nextInt();
 
                     switch (type) {
                         case 1:
-                            System.out.println("Congrats! You choose Mazda!");
+                            LOGGER.info("Congrats! You choose Mazda!");
                             break;
                         case 2:
-                            System.out.println("Congrats! You choose Honda");
+                            LOGGER.info("Congrats! You choose Honda");
                             break;
                         case 3:
-                            System.out.println("Congrats! You choose BMW");
+                            LOGGER.info("Congrats! You choose BMW");
                             break;
                         case 4:
-                            System.out.println("Congrats! You choose Citroen");
+                            LOGGER.info("Congrats! You choose Citroen");
                             break;
                         case 5:
-                            System.out.println("Congrats! You choose Opel");
+                            LOGGER.info("Congrats! You choose Opel");
                             break;
                         default:
-                            System.out.println("Incorrect value, try again, please");
+                            LOGGER.info("Incorrect value, try again, please");
                             break;
 
                     }
@@ -68,7 +94,7 @@ public class Menu {
 
                 case 2:
 
-                    System.out.println("You can choose Sedan or Minivan:" + "\n" +
+                    LOGGER.info("You can choose Sedan or Minivan:" + "\n" +
                             "1: Sedan, \n" +
                             "2: Minivan");
 
@@ -77,16 +103,16 @@ public class Menu {
                     switch (carBody) {
                         case 1:
                             Sedan sedan1 = new Sedan();
-                            System.out.println("You choose Sedan, please, choose car type now");
+                            LOGGER.info("You choose Sedan, please, choose car type now");
                             sedan1.showSedanNames();
                             break;
                         case 2:
                             Minivan minivan = new Minivan();
-                            System.out.println("You choose Minivan, please, choose car type now");
+                            LOGGER.info("You choose Minivan, please, choose car type now");
                             minivan.showMinivanNames();
                             break;
                         default:
-                            System.out.println("Incorrect value, try again");
+                            LOGGER.info("Incorrect value, try again");
                             break;
                     }
 
@@ -96,22 +122,22 @@ public class Menu {
                         case 1:
                             Sedan sedan1 = new Sedan();
                             sedan1.showSedanNames();
-                            System.out.println("Congrats! You choose Mazda!");
+                            LOGGER.info("Congrats! You choose Mazda!");
                             break;
                         case 2:
-                            System.out.println("Congrats! You choose Honda!");
+                            LOGGER.info("Congrats! You choose Honda!");
                             break;
                         case 3:
-                            System.out.println("Congrats! You choose BMW");
+                            LOGGER.info("Congrats! You choose BMW");
                             break;
                         case 4:
-                            System.out.println("Congrats! You choose Citroen");
+                            LOGGER.info("Congrats! You choose Citroen");
                             break;
                         case 5:
-                            System.out.println("Congrats! You choose Opel");
+                            LOGGER.info("Congrats! You choose Opel");
                             break;
                         default:
-                            System.out.println("Incorrect value, try again, please");
+                            LOGGER.info("Incorrect value, try again, please");
                             break;
                     }
                 {
@@ -119,28 +145,28 @@ public class Menu {
 
                     switch (carTypeMinivan) {
                         case 1:
-                            System.out.println("Congrats! You choose Minivan Volkswagen");
+                            LOGGER.info("Congrats! You choose Minivan Volkswagen");
                             break;
                         case 2:
-                            System.out.println("Congrats! You choose Minivan Mercedes");
+                            LOGGER.info("Congrats! You choose Minivan Mercedes");
                             break;
                         case 3:
-                            System.out.println("Congrats! You choose Minivan Renault");
+                            LOGGER.info("Congrats! You choose Minivan Renault");
                             break;
                         case 4:
-                            System.out.println("Congrats! You choose Minivan Fiat");
+                            LOGGER.info("Congrats! You choose Minivan Fiat");
                             break;
                         case 5:
-                            System.out.println("Congrats! You choose Minivan Geely");
+                            LOGGER.info("Congrats! You choose Minivan Geely");
                             break;
                         default:
-                            System.out.println("Incorrect value, try again, please");
+                            LOGGER.info("Incorrect value, try again, please");
                             break;
                     }
                     break;
                 }
                 case 3:
-                    System.out.println("You can choose Cabriolet or Coupe" + "\n" +
+                    LOGGER.info("You can choose Cabriolet or Coupe" + "\n" +
                             "1: Cabriolet, \n" +
                             "2: Coupe");
 
@@ -148,16 +174,16 @@ public class Menu {
                     switch (carBodyExp) {
                         case 1:
                             Cabriolet cabriolet = new Cabriolet();
-                            System.out.println("You choose Cabriolet, please, choose car type now");
+                            LOGGER.info("You choose Cabriolet, please, choose car type now");
                             cabriolet.showCabrioletNames();
                             break;
                         case 2:
                             Coupe coupe = new Coupe();
-                            System.out.println("You choose Coupe, please, choose car type now");
+                            LOGGER.info("You choose Coupe, please, choose car type now");
                             coupe.showCoupeNames();
                             break;
                         default:
-                            System.out.println("Incorrect value, try again");
+                            LOGGER.info("Incorrect value, try again");
                             break;
                     }
 
@@ -168,22 +194,22 @@ public class Menu {
                             Cabriolet cabriolet = new Cabriolet();
                             cabriolet.showCabrioletNames();
                         case 1:
-                            System.out.println("Congrats! You choose Lexus!");
+                            LOGGER.info("Congrats! You choose Lexus!");
                             break;
                         case 2:
-                            System.out.println("Congrats! You choose Audi!");
+                            LOGGER.info("Congrats! You choose Audi!");
                             break;
                         case 3:
-                            System.out.println("Congrats! You choose Mini");
+                            LOGGER.info("Congrats! You choose Mini");
                             break;
                         case 4:
-                            System.out.println("Congrats! You choose Peugeut");
+                            LOGGER.info("Congrats! You choose Peugeut");
                             break;
                         case 5:
-                            System.out.println("Congrats! You choose Porshe");
+                            LOGGER.info("Congrats! You choose Porshe");
                             break;
                         default:
-                            System.out.println("Incorrect value, try again, please");
+                            LOGGER.info("Incorrect value, try again, please");
                             break;
                     }
 
@@ -191,22 +217,22 @@ public class Menu {
 
                     switch (carTypeCoupe) {
                         case 1:
-                            System.out.println("Congrats! You choose Nissan");
+                            LOGGER.info("Congrats! You choose Nissan");
                             break;
                         case 2:
-                            System.out.println("Congrats! You choose Rolls-Royce");
+                            LOGGER.info("Congrats! You choose Rolls-Royce");
                             break;
                         case 3:
-                            System.out.println("Congrats! You choose Toyota");
+                            LOGGER.info("Congrats! You choose Toyota");
                             break;
                         case 4:
-                            System.out.println("Congrats! You choose Acura");
+                            LOGGER.info("Congrats! You choose Acura");
                             break;
                         case 5:
-                            System.out.println("Congrats! You choose Maserati");
+                            LOGGER.info("Congrats! You choose Maserati");
                             break;
                         default:
-                            System.out.println("Incorrect value, try again, please");
+                            LOGGER.info("Incorrect value, try again, please");
                             break;
                     }
                     break;
@@ -215,7 +241,7 @@ public class Menu {
 
 
         } catch (DriverException e) {
-            System.out.println(e.getMessage());
-            System.out.println(e.getAge());
+            LOGGER.info(e.getMessage());
+            LOGGER.info(e.getAge());
         }
     }}
