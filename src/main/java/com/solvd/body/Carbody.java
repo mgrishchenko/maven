@@ -48,3 +48,4 @@ public abstract class Carbody implements Information {
 
     public abstract void removeCarBody();
 }
+
