@@ -3,19 +3,20 @@ package com.solvd.body;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cabriolet extends Carbody {
+public class Cabriolet  {
 
     private int speed;
     private String name;
     private String city;
 
 
-    public void showCabrioletNames () {
+    public void showCabrioletNames() {
         for (int i = 0; i < addCabrioletValues().size(); i++) {
             System.out.println((i + 2) + addCabrioletValues().get(i));
         }
     }
-    public List <String> addCabrioletValues() {
+
+    public List<String> addCabrioletValues() {
         List<String> SedanList = new ArrayList<String>();
         SedanList.add("Lexus");
         SedanList.add("Audi");
@@ -27,11 +28,11 @@ public class Cabriolet extends Carbody {
 
 
     public Cabriolet(int speed, String name, String city) {
+
         this.name = name;
         this.speed = speed;
         this.city = city;
     }
-
 
 
     public String getName() {
@@ -61,14 +62,10 @@ public class Cabriolet extends Carbody {
 
     public Cabriolet() {
 
-    }
-    public Cabriolet(String name, String driver, int year){
-        super(name, driver, year);
 
     }
 
-    @Override
-    public void removeCarBody() {
+    public Cabriolet(String name, String driver, int year) {
 
     }
 }

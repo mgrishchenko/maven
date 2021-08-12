@@ -2,42 +2,29 @@ package com.solvd;
 
 import com.solvd.utils.Connector;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Executor {
     private final static Logger LOGGER = Logger.getLogger((Executor.class));
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-        String query = "Select * FROM carbody";
+        PropertyConfigurator.configure("src/main/resources/log4j.properties");
+        LOGGER.info("Success!");
         Connector connector = new Connector();
-        try {
-            PreparedStatement pst = connector.connect().prepareStatement(query);
-
-                ResultSet resultSet = pst.executeQuery();
-                while (resultSet.next()) {
-                    LOGGER.info(resultSet.getString("name"));
-                }
-
-        } catch (SQLException throwables){
-                throwables.printStackTrace();
+        DBOperations dbOperations = new DBOperations();
+        dbOperations.loadOperations();
+        dbOperations.addValues();
+        dbOperations.updateValues();
 
 
+                Menu menu = new Menu();
+                menu.showMenu();
+            }
 
-        Menu menu1 = new Menu();
-        menu1.showMenu();
-
-
-    }
-
-
-}
-}
-
-
+        }
 
 
 

@@ -6,9 +6,14 @@ import java.util.List;
 public class Minivan extends Carbody {
     private String Information;
 
-    public Minivan() {
-
+    public Minivan(Integer car_id, Integer year, String name, String driver) {
+        super(car_id, year, name, driver);
     }
+
+    public Minivan() {
+        super();
+    }
+
 
     public void showMinivanNames () {
         for (int i = 0; i < addMiniValues().size(); i++) {
@@ -26,20 +31,7 @@ public class Minivan extends Carbody {
 
     }
 
-    public Minivan (String name, String driver, int year) {
-        super(name, driver, year);
-    }
-
-
-    @Override
-    public void ride() {
-        System.out.println("Minivan - Big comfortable car");
 
 
     }
 
-    @Override
-    public void removeCarBody() {
-
-    }
-}

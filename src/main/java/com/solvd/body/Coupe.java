@@ -3,7 +3,7 @@ package com.solvd.body;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Coupe extends Carbody {
+public class Coupe  {
 
     private int speed;
     private String brand;
@@ -43,19 +43,9 @@ public class Coupe extends Carbody {
         this.brand = brand;
     }
 
-    public Coupe(){
-
-        }
-
-    @Override
-    public void ride() {
-        System.out.println("Three doors car");
-
+    public Coupe() {
     }
 
-    @Override
-    public void removeCarBody() {
 
-    }
 }
 
